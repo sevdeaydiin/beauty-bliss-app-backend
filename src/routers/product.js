@@ -5,8 +5,8 @@ const {
     postProduct, 
     getProduct,
     uploadImage,
-    getImage
-    //allUsers,
+    getImage,
+    fetchProductById,
     //fetchUser
 } = require('../controllers/product');
 
@@ -22,7 +22,7 @@ router.route('/product').post(postProduct);
 router.route('/product').get(getProduct);
 router.route('/uploadImage/:id').post(upload.single('upload'), uploadImage);
 router.route("/product/:id/image").get(getImage)
-//router.route('/users').get(allUsers);
+router.route('/product/:id').get(fetchProductById);
 //router.route('/users/:id').get(fetchUser);
 
 module.exports = router;

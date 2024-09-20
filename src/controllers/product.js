@@ -54,7 +54,7 @@ exports.getProduct = catchAsyncErrors(async (req, res, next) => {
 exports.getImage = catchAsyncErrors(async (req, res, next) => {
 
     try {
-        const tweet = await Tweet.findById(req.params.id)
+        const tweet = await Product.findById(req.params.id)
 
         if(!tweet || !tweet.image) {
             throw new Error('Tweet image doesnt exists')
@@ -63,6 +63,15 @@ exports.getImage = catchAsyncErrors(async (req, res, next) => {
         res.set('Content-Type', 'image/jpg')
         res.send(tweet.image)
 
+    } catch(e) {
+        res.status(404).send(e)
+    }
+})
+
+exports.fetchProductById = catchAsyncErrors(async (req, res, next) => {
+    try {
+        const products = await Product.findById(req.params.id)
+        res.send(products)
     } catch(e) {
         res.status(404).send(e)
     }
