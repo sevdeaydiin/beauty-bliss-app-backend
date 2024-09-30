@@ -1,2 +1,5 @@
 # Node.js modülleri
 node_modules/
+
+# Ortam Değişkenleri
+.env
